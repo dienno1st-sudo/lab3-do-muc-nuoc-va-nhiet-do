@@ -24,11 +24,11 @@ Bài thực hành **Đề 4**: sử dụng ESP32 và FreeRTOS để đọc kho�
 | [firmware/diagram.json](firmware/diagram.json) | Linh kiện và sơ đồ nối dây Wokwi |
 | [firmware/libraries.txt](firmware/libraries.txt) | Danh sách thư viện |
 | [Be_nuoi_MQTT.html](Be_nuoi_MQTT.html) | Giao diện giám sát và điều khiển qua MQTT |
-| [images/](images/) | Thư mục dành cho ảnh sơ đồ và kết quả |
+| [video_demo/](video_demo/) | Video minh họa hoạt động hệ thống |
 | [wokwi-link/README.md](wokwi-link/README.md) | Đường dẫn dự án mô phỏng |
 | [bao_cao_lap3/](bao_cao_lap3/) | Thư mục dành cho báo cáo Word/PDF sẽ bổ sung |
 
-File `.gitkeep` dùng để giữ thư mục khi chưa có tài liệu. Báo cáo và hình ảnh kết quả sẽ được bổ sung sau.
+File `.gitkeep` dùng để giữ thư mục khi chưa có tài liệu. Báo cáo sẽ được bổ sung sau.
 
 ## 3. Phần cứng và kết nối
 
@@ -178,7 +178,7 @@ Wokwi không tự thay đổi khoảng cách khi bơm/van hoạt động; dùng 
 
 ## 9. Báo cáo và minh chứng
 
-Tải báo cáo Word/PDF vào [bao_cao_lap3/](bao_cao_lap3/) và ảnh kết quả vào [images/](images/).
+Tải báo cáo Word/PDF vào [bao_cao_lap3/](bao_cao_lap3/) và video minh họa vào [video_demo/](video_demo/).
 
 Nội dung báo cáo cần trình bày:
 
