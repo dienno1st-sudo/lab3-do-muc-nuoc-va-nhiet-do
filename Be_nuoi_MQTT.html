@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aqua Monitor · Giám sát bể nuôi</title>
+<style>
+:root{--bg:#f1f6f5;--paper:#fff;--ink:#173b36;--muted:#6a807b;--line:#dce8e4;--teal:#087f6c;--blue:#2579a1;--orange:#c67737;--red:#af3d3d;--shadow:0 8px 30px #173b3605}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #67c5b0;outline-offset:3px}.shell{max-width:1180px;margin:auto;padding:32px 28px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.4px;font-size:19px}.brand-icon{display:grid;place-items:center;background:var(--teal);color:white;border-radius:13px;width:42px;height:42px}.eyebrow{font-size:11px;letter-spacing:1.7px;font-weight:750;text-transform:uppercase;color:var(--muted)}.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:30px;padding:6px 12px;background:#ffffff80}.heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}h1{font-size:clamp(27px,4vw,38px);letter-spacing:-1.3px;line-height:1.2;margin:7px 0 10px}p{margin:0;color:var(--muted)}.status{display:inline-flex;align-items:center;gap:8px;font-size:12px;white-space:nowrap;background:#e5eeea;color:#60756d;border-radius:24px;padding:8px 12px}.status.good{background:#dcf1e7;color:#176b4b}.status.warn{background:#fff0d8;color:#8b5b17}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.connection{background:#e4efea;border:1px solid #d4e5dd;border-radius:14px;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.connection strong{font-size:13px;display:block}.connection p{font-size:12px;margin-top:3px}.button{border:1px solid var(--line);border-radius:9px;padding:9px 15px;background:white;color:var(--ink);font-weight:650;font-size:13px}.button.primary{background:var(--teal);border-color:var(--teal);color:#fff}.button:hover:not(:disabled){filter:brightness(.96)}.metrics,.charts,.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{background:var(--paper);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);padding:23px}.metric-top{display:flex;align-items:center;justify-content:space-between}.metric-label{font-size:14px;font-weight:650}.icon{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#e8f3f6;color:var(--blue)}.icon.warm{background:#fff1e5;color:var(--orange)}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.metric-reading{display:flex;align-items:baseline;gap:10px;margin:11px 0 3px}.metric-value{font-size:48px;letter-spacing:-2px;font-weight:650;line-height:1.2;font-variant-numeric:tabular-nums}.unit{font-size:20px;color:var(--muted)}.caption{font-size:12px;color:var(--muted)}.section-title{display:flex;align-items:center;justify-content:space-between;margin:30px 0 13px;gap:12px}h2{font-size:17px;letter-spacing:-.3px;margin:0}.section-title span{color:var(--muted);font-size:12px}.chart-card{padding:20px 20px 10px}.chart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.chart-title{font-size:13px;font-weight:650}.legend{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:center}.legend i{height:3px;width:14px;background:var(--blue);border-radius:5px}.legend.warm i{background:var(--orange)}.canvas-wrap{height:190px;position:relative}canvas{display:block;width:100%;height:100%}.control-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.control-title{font-size:15px;font-weight:700}.state{font-size:12px;padding:4px 9px;border-radius:6px;background:#edf2f0;color:var(--muted)}.state.on{background:#dcf1e7;color:#176b4b}.control-card p{font-size:12px;min-height:38px}.control-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}.duty{font-size:12px;color:var(--muted)}.mode-group{display:flex;gap:10px;align-items:center}.mode{font-size:11px;border:1px solid var(--line);padding:4px 9px;border-radius:20px;background:white}.notice{font-size:12px;color:var(--muted);margin-top:12px;min-height:20px}.notice.error{color:var(--red)}details{margin-top:24px;border:1px solid var(--line);background:white;border-radius:13px;padding:14px 18px}summary{font-size:13px;font-weight:650;cursor:pointer}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:17px 0}label{font-size:12px;color:var(--muted);display:block}label.wide{grid-column:1/-1}input{display:block;margin-top:5px;padding:10px 11px;border:1px solid var(--line);border-radius:8px;width:100%;color:var(--ink);background:#fbfcfb;font-size:12px}code{overflow-wrap:anywhere;font-size:12px;color:var(--teal)}.help{font-size:12px;line-height:1.8;color:var(--muted);margin-top:12px}.help ol{padding-left:19px}.help li{margin:5px 0}.help table{border-collapse:collapse;width:100%;margin:10px 0}.help th,.help td{padding:7px;text-align:left;border-bottom:1px solid var(--line)}footer{display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:11px;margin:23px 0 4px}.water-level.stale,.temperature.stale{opacity:.55}@media(max-width:680px){.shell{padding:22px 16px}.top{margin-bottom:25px}.heading{display:block}.heading .status{margin-top:13px}.metrics,.charts,.controls{gap:12px}.card{padding:17px}.metric-value{font-size:39px}.charts,.controls{grid-template-columns:1fr}.connection{padding:13px}.connection p{max-width:240px}.tag{display:none}.section-title{align-items:start}.section-title .mode-group{flex-wrap:wrap;justify-content:end}.canvas-wrap{height:185px}.form-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:4px}.metric-label{font-size:12px}.icon{width:29px;height:29px}.caption{font-size:11px}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="top"><div class="brand"><span class="brand-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-2 4-7 8-7 12a7 7 0 0 0 14 0c0-4-5-8-7-12Z"/><path d="M8 16c0 2 2 3 3 3"/></svg></span>Aqua Monitor</div><span class="tag">Đề 4 · ESP32 / FreeRTOS / MQTT</span></header>
+<section class="heading"><div><div class="eyebrow">Hệ thống giám sát bể nuôi</div><h1>Theo dõi nước, chủ động chăm sóc.</h1><p>Dữ liệu cảm biến và điều khiển bơm, van trong một giao diện.</p></div><div id="brokerStatus" class="status" role="status"><span class="dot"></span><span id="brokerText">Chưa kết nối</span></div></section>
+<section class="connection"><div><strong id="streamTitle">Sẵn sàng nhận dữ liệu từ ESP32</strong><p id="streamText">Chạy Wokwi, sau đó kết nối để bắt đầu theo dõi.</p></div><button id="connectBtn" class="button primary" type="button">Kết nối MQTT</button></section>
+<section class="metrics" aria-label="Dữ liệu cảm biến">
+<article class="card water-level" id="waterCard"><div class="metric-top"><span class="metric-label">Mực nước</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c3-4 6 4 9 0s6 4 9 0M3 12c3-4 6 4 9 0s6 4 9 0M3 17c3-4 6 4 9 0s6 4 9 0"/></svg></span></div><div class="metric-reading"><span id="distanceValue" class="metric-value">—</span><span class="unit">m</span></div><p class="caption">Khoảng cách cảm biến → mặt nước (d)</p></article>
+<article class="card temperature" id="tempCard"><div class="metric-top"><span class="metric-label">Nhiệt độ nước</span><span class="icon warm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14.5V5a3 3 0 0 1 6 0v9.5a5 5 0 1 1-6 0Z"/><path d="M12 9v9"/></svg></span></div><div class="metric-reading"><span id="temperatureValue" class="metric-value">—</span><span class="unit">°C</span></div><p class="caption">Đầu dò nhiệt độ DS18B20</p></article>
+</section>
+<div class="section-title"><h2>Diễn biến theo thời gian</h2><span>60 mẫu mới nhất</span></div>
+<section class="charts" aria-label="Biểu đồ thời gian thực">
+<article class="card chart-card"><div class="chart-head"><span class="chart-title">Mực nước · khoảng cách d</span><span class="legend"><i></i>Mét</span></div><div class="canvas-wrap"><canvas id="waterChart" role="img" aria-label="Biểu đồ khoảng cách đến mặt nước theo thời gian"></canvas></div></article>
+<article class="card chart-card"><div class="chart-head"><span class="chart-title">Nhiệt độ nước</span><span class="legend warm"><i></i>Độ C</span></div><div class="canvas-wrap"><canvas id="tempChart" role="img" aria-label="Biểu đồ nhiệt độ nước theo thời gian"></canvas></div></article>
+</section>
+<div class="section-title"><h2>Điều khiển thủ công</h2><div class="mode-group"><span id="modeBadge" class="mode">Chưa nhận trạng thái</span><button id="autoBtn" class="button" type="button" disabled>Chuyển tự động</button></div></div>
+<section class="controls" aria-label="Điều khiển cơ cấu chấp hành">
+<article class="card control-card"><div class="control-head"><span class="control-title">Máy bơm nước vào</span><span id="pumpState" class="state">Chưa rõ</span></div><p>Bật bơm ở PWM 100%. Khi bật bơm, ESP32 sẽ đóng van xả.</p><div class="control-bottom"><span id="pumpDuty" class="duty">PWM: —</span><button id="pumpBtn" class="button primary" type="button" disabled>Bật bơm</button></div></article>
+<article class="card control-card"><div class="control-head"><span class="control-title">Van thoát nước ra</span><span id="valveState" class="state">Chưa rõ</span></div><p>Mở hoặc đóng van thoát. Khi mở van, ESP32 sẽ dừng máy bơm.</p><div class="control-bottom"><span class="duty">Điều khiển qua relay</span><button id="valveBtn" class="button primary" type="button" disabled>Mở van</button></div></article>
+</section>
+<p id="commandNotice" class="notice" role="status" aria-live="polite">Bấm nút bơm/van để chuyển sang manual. Trạng thái lấy từ phản hồi ESP32.</p>
+<details id="settings"><summary>Cấu hình kết nối MQTT</summary><form id="settingsForm"><div class="form-grid"><label class="wide">Địa chỉ MQTT qua WebSocket bảo mật<input id="brokerUrl" type="url" value="wss://broker.hivemq.com:8884/mqtt" required spellcheck="false"></label><label>Topic nhận dữ liệu<input id="dataTopic" value="nhungblt/de4/ea9c235d/data" required spellcheck="false"></label><label>Topic gửi lệnh<input id="cmdTopic" value="nhungblt/de4/ea9c235d/cmd" required spellcheck="false"></label></div><button class="button" type="submit">Áp dụng & kết nối lại</button></form><p class="help">Cấu hình mặc định khớp code ESP32 đã gửi. Khi đổi topic, sửa cả trong HTML và sketch. Cần Internet để tải thư viện MQTT.js và kết nối broker.</p></details>
+<details><summary>Hướng dẫn chạy & quy tắc điều khiển</summary><div class="help"><ol><li>Chạy sơ đồ Wokwi với code ESP32 đã có. Chờ Serial báo <code>[MQTT core 0] Connected</code>.</li><li>Mở file HTML này bằng Chrome/Edge rồi bấm <b>Kết nối MQTT</b>. Không cần cài web server.</li><li>Thay đổi khoảng cách trên HC-SR04 hoặc nhiệt độ trên DS18B20 trong Wokwi; số và hai biểu đồ sẽ cập nhật.</li><li>Hai nút bơm/van gửi lệnh manual. Nút <b>Chuyển tự động</b> gửi lệnh <code>AUTO</code>.</li></ol><table><thead><tr><th>Khoảng cách d</th><th>Tự động trên ESP32</th></tr></thead><tbody><tr><td>d &lt; 0,5 m</td><td>Mở van 10 giây</td></tr><tr><td>1,0 ≤ d &lt; 1,5 m</td><td>Bơm PWM 50% trong 10 giây</td></tr><tr><td>1,5 ≤ d ≤ 2,0 m</td><td>Bơm PWM 100% trong 20 giây</td></tr><tr><td>Vùng còn lại</td><td>Dừng khi không có chu kỳ đang chạy</td></tr></tbody></table><p>Code ESP32 chạy một chu kỳ cho mỗi vùng; đổi sang vùng khác để kích lại. Trang web chỉ gửi lệnh và hiển thị dữ liệu; ESP32 thực hiện luật tự động. Hai biểu đồ giữ tối đa 60 mẫu trong phiên mở trang.</p><p><b>Cách hiểu mực nước:</b> bộ code hiện gửi khoảng cách d từ cảm biến đến mặt nước, không phải chiều cao nước h. Muốn tính h cần biết độ cao lắp cảm biến H và dùng h = H − d.</p><p>JSON nhận: <code>distance_m, temperature_c, pump_percent, valve_open, mode, sample_ms</code>. Lệnh gửi: <code>PUMP_ON / PUMP_OFF / VALVE_ON / VALVE_OFF / AUTO</code>. Kết nối thành công với broker chưa có nghĩa ESP32 đã online; cần nhận được bản tin dữ liệu.</p><p>Broker công cộng dùng cho bài thực hành và dữ liệu mô phỏng; không gửi thông tin riêng tư. Sau 10 giây không có phản hồi mới, nút điều khiển sẽ tạm khóa. Web không tự gửi lệnh tắt khi mất kết nối.</p><p>Tham khảo: <a href="https://github.com/mqttjs/MQTT.js" target="_blank" rel="noopener">MQTT.js</a> · <a href="https://hivemq.mqtt-dashboard.com/" target="_blank" rel="noopener">HiveMQ broker</a>.</p></div></details>
+<footer><span>Aqua Monitor · Bài thực hành giám sát môi trường bể nuôi</span><span id="packetCount">Chưa nhận bản tin</span></footer>
+</main>
+<script src="https://unpkg.com/mqtt@5.16.1/dist/mqtt.min.js"></script>
+<script>
+'use strict';
+// ================= CẤU HÌNH KHỚP SKETCH ESP32 =================
+const DEFAULT_CONFIG = {
+  url: 'wss://broker.hivemq.com:8884/mqtt',
+  dataTopic: 'nhungblt/de4/ea9c235d/data',
+  cmdTopic: 'nhungblt/de4/ea9c235d/cmd'
+};
+const $ = id => document.getElementById(id);
+const LIMIT = 60, STALE_MS = 10000;
+let config = {...DEFAULT_CONFIG}, client = null, connected = false, subscribed = false;
+let connectedAt = 0;
+let lastRx = 0, lastFresh = 0, previousSample = null, state = null, packets = 0;
+let pending = null, pendingTimer = null, history = [];
+const clock = t => new Date(t).toLocaleTimeString('vi-VN', {hour12:false});
+const finiteNumber = v => typeof v === 'number' && Number.isFinite(v);
+function notice(text, error = false) {
+  $('commandNotice').textContent = text;
+  $('commandNotice').classList.toggle('error', error);
+}
+function clearPending() {
+  clearTimeout(pendingTimer); pendingTimer = null; pending = null;
+}
+function brokerBadge(text, type = '') {
+  $('brokerText').textContent = text;
+  $('brokerStatus').className = 'status' + (type ? ' ' + type : '');
+}
+function freshState() { return connected && subscribed && state && lastRx >= connectedAt && Date.now()-lastRx < STALE_MS; }
+function refreshUI() {
+  const now = Date.now(), fresh = freshState(), sensorFresh = lastFresh && now-lastFresh < STALE_MS;
+  $('pumpBtn').disabled = !fresh || !!pending;
+  $('valveBtn').disabled = !fresh || !!pending;
+  $('autoBtn').disabled = !fresh || !!pending || state.mode === 'auto';
+  $('pumpBtn').textContent = state && state.pump_percent > 0 ? 'Tắt bơm' : 'Bật bơm';
+  $('valveBtn').textContent = state && state.valve_open ? 'Đóng van' : 'Mở van';
+  $('modeBadge').textContent = !state ? 'Chưa nhận trạng thái' : !fresh ? 'Trạng thái đã cũ' : state.mode === 'auto' ? 'Tự động · AUTO' : 'Thủ công · MANUAL';
+  $('waterCard').classList.toggle('stale', !!lastFresh && !sensorFresh);
+  $('tempCard').classList.toggle('stale', !!lastFresh && !sensorFresh);
+  if (!connected) {
+    $('streamTitle').textContent = client ? 'Đang chờ kết nối broker' : 'Sẵn sàng nhận dữ liệu từ ESP32';
+    $('streamText').textContent = lastRx ? 'Kết nối đã gián đoạn. Giá trị đang hiển thị là dữ liệu cũ.' : 'Chạy Wokwi, sau đó kết nối để bắt đầu theo dõi.';
+  } else if (!subscribed) {
+    $('streamTitle').textContent = 'Đang đăng ký topic dữ liệu';
+    $('streamText').textContent = 'Chờ xác nhận từ MQTT broker.';
+  } else if (!lastRx) {
+    $('streamTitle').textContent = 'Đã kết nối broker · đang chờ ESP32';
+    $('streamText').textContent = 'Kiểm tra Wokwi đang chạy và topic trong sketch trùng cấu hình.';
+  } else if (!fresh) {
+    $('streamTitle').textContent = 'Chưa có phản hồi mới từ ESP32';
+    $('streamText').textContent = 'Bản tin cuối: ' + clock(lastRx) + '. Các nút tạm khóa đến khi có dữ liệu mới.';
+  } else {
+    $('streamTitle').textContent = sensorFresh ? 'Đang nhận dữ liệu trực tiếp' : 'ESP32 có phản hồi · mẫu cảm biến đã cũ';
+    $('streamText').textContent = 'Cập nhật lúc ' + clock(lastRx) + ' · ' + Math.floor((now-lastRx)/1000) + ' giây trước';
+  }
+}
+// Vẽ hai biểu đồ canvas; không cần thư viện biểu đồ bên ngoài.
+function drawChart(id, key, color, unit) {
+  const canvas = $(id), box = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+  const w = Math.max(240, box.width), h = Math.max(150, box.height);
+  canvas.width = Math.round(w*ratio); canvas.height = Math.round(h*ratio);
+  const ctx = canvas.getContext('2d'); ctx.scale(ratio, ratio);
+  const left = 41, right = w-13, top = 12, bottom = h-31;
+  const valid = history.map(p=>p[key]).filter(finiteNumber);
+  let low = 0, high = key === 'distance_m' ? 2 : 40;
+  if (valid.length) {
+    const min = Math.min(...valid), max = Math.max(...valid), padding = Math.max(key === 'distance_m' ? .15 : 1, (max-min)*.2);
+    low = key === 'distance_m' ? Math.max(0,min-padding) : min-padding;
+    high = max+padding;
+  }
+  ctx.font = '10px system-ui'; ctx.lineWidth = 1;
+  for (let i=0;i<=3;i++) {
+    const y = top+(bottom-top)*i/3;
+    ctx.strokeStyle = '#e7eeeb'; ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke();
+    ctx.fillStyle = '#789088'; ctx.textAlign='right'; ctx.fillText((high-(high-low)*i/3).toFixed(1),left-8,y+4);
+  }
+  if (!history.length) {
+    ctx.fillStyle='#8a9e97';ctx.textAlign='center';ctx.font='12px system-ui';
+    ctx.fillText('Biểu đồ sẽ xuất hiện khi ESP32 gửi dữ liệu',(left+right)/2,(top+bottom)/2);
+    return;
+  }
+  const pointX = i => left+(right-left)*(history.length===1?.5:i/(history.length-1));
+  const pointY = v => bottom-(v-low)/(high-low)*(bottom-top);
+  ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();let previousValid=false;
+  history.forEach((p,i)=>{if(!finiteNumber(p[key])){previousValid=false;return;}const x=pointX(i),y=pointY(p[key]);if(previousValid)ctx.lineTo(x,y);else ctx.moveTo(x,y);previousValid=true;});ctx.stroke();
+  const last=history[history.length-1];
+  if(finiteNumber(last[key])){ctx.fillStyle=color;ctx.beginPath();ctx.arc(pointX(history.length-1),pointY(last[key]),3.3,0,Math.PI*2);ctx.fill();}
+  ctx.font='10px system-ui';ctx.fillStyle='#789088';
+  const indices=history.length===1?[0]:history.length<4?[0,history.length-1]:[0,Math.floor((history.length-1)/2),history.length-1];
+  indices.forEach((i,n)=>{ctx.textAlign=indices.length===1?'center':n===0?'left':n===indices.length-1?'right':'center';ctx.fillText(clock(history[i].received),pointX(i),h-9);});
+}
+function renderCharts(){drawChart('waterChart','distance_m','#2579a1','m');drawChart('tempChart','temperature_c','#c67737','°C');}
+// Chấp nhận null ở cảm biến khi ESP32 báo lỗi; không đổi null thành số 0.
+function validateData(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return false;
+  return ['distance_m','temperature_c'].every(k => raw[k] === null || finiteNumber(raw[k])) &&
+    (raw.distance_m === null || raw.distance_m >= 0) &&
+    Number.isInteger(raw.pump_percent) && raw.pump_percent >= 0 && raw.pump_percent <= 100 &&
+    typeof raw.valve_open === 'boolean' && ['auto','manual'].includes(raw.mode) &&
+    Number.isInteger(raw.sample_ms) && raw.sample_ms >= 0;
+}
+function receiveData(payload, packet) {
+  let data;
+  try { data=JSON.parse(payload.toString()); } catch { notice('Bỏ qua bản tin không đúng định dạng JSON.',true); return; }
+  if (!validateData(data)) { notice('Bỏ qua JSON không khớp dữ liệu của sketch ESP32.',true);return; }
+  // Bản tin retained có thể cũ; sketch hiện publish retain=false.
+  if (packet && packet.retain) { notice('Bỏ qua bản tin retained; chờ dữ liệu trực tiếp từ ESP32.',true);return; }
+  const now=Date.now();lastRx=now;state=data;packets++;
+  $('distanceValue').textContent=finiteNumber(data.distance_m)?data.distance_m.toFixed(2):'Lỗi';
+  $('temperatureValue').textContent=finiteNumber(data.temperature_c)?data.temperature_c.toFixed(1):'Lỗi';
+  $('pumpState').textContent=data.pump_percent>0?'Đang chạy':'Đã tắt';
+  $('pumpState').className='state'+(data.pump_percent>0?' on':'');
+  $('pumpDuty').textContent='PWM: '+data.pump_percent+'%';
+  $('valveState').textContent=data.valve_open?'Đang mở':'Đã đóng';
+  $('valveState').className='state'+(data.valve_open?' on':'');
+  $('packetCount').textContent='Đã nhận '+packets+' bản tin';
+  if (previousSample !== data.sample_ms) {
+    previousSample=data.sample_ms;lastFresh=now;
+    history.push({...data,received:now});if(history.length>LIMIT)history.shift();renderCharts();
+  }
+  if (pending && now>=pending.sent && pending.matches(data)) {
+    const label=pending.label;clearPending();notice('ESP32 đã phản hồi: '+label+'.');
+  }
+  refreshUI();
+}
+function resetView(){lastRx=0;lastFresh=0;previousSample=null;state=null;history=[];packets=0;
+  $('distanceValue').textContent='—';$('temperatureValue').textContent='—';
+  $('pumpState').textContent='Chưa rõ';$('valveState').textContent='Chưa rõ';
+  $('pumpState').className='state';$('valveState').className='state';
+  $('pumpDuty').textContent='PWM: —';$('packetCount').textContent='Chưa nhận bản tin';renderCharts();
+}
+function disconnect() {
+  const old=client;client=null;connected=false;subscribed=false;clearPending();
+  if(old){old.removeAllListeners();old.end(true);}
+  brokerBadge('Đã ngắt kết nối');$('connectBtn').textContent='Kết nối MQTT';refreshUI();
+}
+function connect() {
+  disconnect();resetView();
+  if(!window.mqtt){brokerBadge('Không tải được thư viện','warn');notice('Không tải được MQTT.js. Kiểm tra Internet rồi tải lại trang.',true);return;}
+  brokerBadge('Đang kết nối…','warn');$('connectBtn').textContent='Ngắt kết nối';
+  notice('Đang kết nối broker. Chưa gửi lệnh điều khiển.');
+  const active=mqtt.connect(config.url,{clientId:'aqua-web-'+crypto.randomUUID().replaceAll('-','').slice(0,16),clean:true,protocolVersion:4,keepalive:30,connectTimeout:10000,reconnectPeriod:3000,queueQoSZero:false,resubscribe:false});
+  client=active;
+  active.on('connect',()=>{if(client!==active)return;connected=true;connectedAt=Date.now();subscribed=false;brokerBadge('Đã kết nối MQTT','good');
+    active.subscribe(config.dataTopic,{qos:0},(err,granted)=>{if(client!==active)return;
+      if(err||!granted||!granted.length||granted.some(g=>g.qos===128)){subscribed=false;notice('Không đăng ký được topic dữ liệu. Kiểm tra cấu hình.',true);}
+      else{subscribed=true;notice('Đã đăng ký topic. Chờ dữ liệu ESP32 để mở nút điều khiển.');}refreshUI();});refreshUI();});
+  active.on('message',(topic,payload,packet)=>{if(client===active&&topic===config.dataTopic)receiveData(payload,packet);});
+  active.on('reconnect',()=>{if(client!==active)return;brokerBadge('Đang kết nối lại…','warn');});
+  active.on('close',()=>{if(client!==active)return;connected=false;subscribed=false;
+    if(pending)notice('Mất kết nối khi chờ phản hồi. Chưa xác nhận thiết bị đã thực hiện lệnh.',true);
+    clearPending();brokerBadge('Mất kết nối · đang thử lại','warn');refreshUI();});
+  active.on('error',()=>{if(client!==active)return;notice('Lỗi kết nối MQTT. Kiểm tra Internet, broker và địa chỉ wss://.',true);});
+  refreshUI();
+}
+function sendCommand(command,label,matches) {
+  if(!client||!client.connected||!freshState()||pending){notice('Cần kết nối và nhận trạng thái mới từ ESP32 trước khi điều khiển.',true);return;}
+  const active=client;
+  pending={command,label,matches,sent:Date.now()};
+  notice('Đã gửi yêu cầu '+label.toLowerCase()+' · đang chờ ESP32 phản hồi…');
+  pendingTimer=setTimeout(()=>{if(!pending)return;clearPending();notice('Chưa nhận được trạng thái xác nhận sau 8 giây. Kiểm tra ESP32 và topic lệnh.',true);refreshUI();},8000);
+  refreshUI();
+  // Không retain và không xếp hàng lệnh QoS 0 khi offline.
+  active.publish(config.cmdTopic,command,{qos:0,retain:false},err=>{if(client!==active)return;if(err&&pending&&pending.command===command){clearPending();notice('Không gửi được lệnh MQTT.',true);refreshUI();}});
+}
+$('connectBtn').addEventListener('click',()=>client?disconnect():connect());
+$('pumpBtn').addEventListener('click',()=>{if(!state)return;const on=state.pump_percent===0;
+  sendCommand(on?'PUMP_ON':'PUMP_OFF',on?'Bật bơm':'Tắt bơm',d=>d.mode==='manual'&&(on?d.pump_percent===100&&!d.valve_open:d.pump_percent===0));});
+$('valveBtn').addEventListener('click',()=>{if(!state)return;const on=!state.valve_open;
+  sendCommand(on?'VALVE_ON':'VALVE_OFF',on?'Mở van':'Đóng van',d=>d.mode==='manual'&&d.valve_open===on&&(!on||d.pump_percent===0));});
+$('autoBtn').addEventListener('click',()=>sendCommand('AUTO','Chuyển tự động',d=>d.mode==='auto'));
+$('settingsForm').addEventListener('submit',event=>{event.preventDefault();
+  const next={url:$('brokerUrl').value.trim(),dataTopic:$('dataTopic').value.trim(),cmdTopic:$('cmdTopic').value.trim()};
+  try{const u=new URL(next.url);if(u.protocol!=='wss:')throw new Error();}catch{notice('Địa chỉ broker cần bắt đầu bằng wss://.',true);return;}
+  if(!next.dataTopic||!next.cmdTopic||/[+#\u0000]/.test(next.dataTopic+next.cmdTopic)||next.dataTopic===next.cmdTopic){notice('Nhập hai topic khác nhau, không chứa ký tự +, # hoặc NUL.',true);return;}
+  config=next;connect();
+});
+window.addEventListener('resize',renderCharts);
+window.addEventListener('beforeunload',()=>{if(client)client.end(true);});
+setInterval(refreshUI,1000);renderCharts();refreshUI();
+</script>
+</body>
+</html>
