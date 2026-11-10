@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "author": "De 4 - Giam sat be nuoi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 40, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar",
+      "top": -180,
+      "left": -150,
+      "attrs": { "distance": "168" }
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "temp",
+      "top": 46.87,
+      "left": -226.32,
+      "attrs": { "temperature": "28" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pullup",
+      "top": 91.2,
+      "left": -192.55,
+      "rotate": 90,
+      "attrs": { "value": "4700" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "echo1",
+      "top": -82.45,
+      "left": 86.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "echo2",
+      "top": -40,
+      "left": 180,
+      "rotate": 90,
+      "attrs": { "value": "2000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "pump",
+      "top": -3.6,
+      "left": 397.4,
+      "attrs": { "color": "blue", "label": "BOM PWM" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rp",
+      "top": 109.55,
+      "left": 336,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 200,
+      "left": 280,
+      "attrs": { "transistor": "npn" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rv",
+      "top": 359.15,
+      "left": 364.8,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "valve",
+      "top": 380.4,
+      "left": 339.8,
+      "attrs": { "color": "green", "label": "VAN XA" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t1",
+      "top": -230,
+      "left": -150,
+      "attrs": { "text": "HC-SR04: TRIG=18 / ECHO=19" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t2",
+      "top": 230,
+      "left": -260,
+      "attrs": { "text": "DS18B20: DQ=4\nKeo len 3V3 bang R 4.7k" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t3",
+      "top": -40,
+      "left": 280,
+      "attrs": { "text": "BOM VAO (mo phong LED)\nGPIO25: PWM 50% / 100%" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t4",
+      "top": 450,
+      "left": 260,
+      "attrs": { "text": "VAN XA: GPIO26 -> relay\nLED xanh la tai mo phong" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "sonar:GND", "red", [ "h-50", "v-220" ] ],
+    [ "esp:18", "sonar:TRIG", "red", [ "h30", "v-164.8", "h-199.46" ] ],
+    [ "sonar:ECHO", "echo1:1", "red", [ "v30" ] ],
+    [ "echo1:2", "esp:19", "red", [ "v25.95", "h20", "v174.4" ] ],
+    [ "echo2:2", "esp:GND.2", "red", [ "v50" ] ],
+    [ "esp:3V3", "temp:VCC", "magenta", [ "h-100", "v100" ] ],
+    [ "esp:4", "temp:DQ", "purple", [ "h40", "v180", "h-370" ] ],
+    [ "pullup:2", "temp:DQ", "purple", [ "h-48", "v-30" ] ],
+    [ "esp:25", "rp:1", "blue", [ "h-30", "v250", "h350", "v-300" ] ],
+    [ "rp:2", "pump:A", "blue", [] ],
+    [ "esp:5V", "relay:VCC", "cyan", [ "h-60", "v270", "h276.19", "v-292.6" ] ],
+    [ "esp:GND.2", "relay:GND", "cyan", [ "h148.84", "v160.2" ] ],
+    [ "esp:26", "relay:IN", "cyan", [ "h-20", "v220", "h264.99", "v-136.8" ] ],
+    [ "esp:5V", "relay:COM", "cyan", [ "h-70", "v290", "h516.59", "v-301.6" ] ],
+    [ "valve:C", "esp:GND.2", "limegreen", [ "v24.6", "h90", "v-374.4", "h-364.24" ] ],
+    [ "pullup:1", "esp:3V3", "green", [ "h0" ] ],
+    [ "sonar:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "pump:C", "esp:GND.2", "blue", [ "v0" ] ],
+    [ "temp:GND", "esp:5V", "magenta", [ "v0" ] ],
+    [ "relay:NO", "rv:2", "green", [ "h0" ] ],
+    [ "rv:1", "valve:A", "green", [ "v19.2", "h9.6", "v48" ] ],
+    [ "echo1:2", "echo2:1", "red", [ "v0", "h66" ] ]
+  ],
+  "serialMonitor": { "convertEol": true, "display": "always", "newline": "lf" },
+  "dependencies": {}
+}
